@@ -40,9 +40,11 @@ endif
 enddo
 enddo
 i=1
-do j=2,jed-1
+do j=1,jed-1
+	if (ph(i,j)==2) then
 		u(i,j)=u0
 		v(i,j)=0.0
 		rho(i,j)=(f(0,i,j)+f(2,i,j)+f(4,i,j)+2*(f(3,i,j)+f(6,i,j)+f(7,i,j)))/(1-u(i,j))
+	endif
 enddo
 end subroutine

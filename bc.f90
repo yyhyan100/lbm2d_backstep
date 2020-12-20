@@ -1,12 +1,13 @@
 subroutine bc()
 !call non_eq_extra()
-call inlet()
-call bouncebk()
+call inlet_vel()
+call inner_wall()
 call outlet_pressure()
 call upper_wall()
+call bc_macro()
 end subroutine
-
-subroutine inlet() ! Zou-He boundary condition for velocity inlet
+!----------------------------------------------------------------------------
+subroutine inlet_vel() ! Zou-He boundary condition for velocity inlet
 	use vars
 	i=1
 	do j=1,jed
@@ -52,11 +53,12 @@ subroutine outlet_pressure() ! pressure boundary condition
 		f(3,i,j)=f(1,i,j)-2*rho_out*u(i,j)/3
 		f(6,i,j)=f(8,i,j)-0.5*(f(2,i,j)-f(4,i,j))-rho_out*u(i,j)/6.0
 		f(7,i,j)=f(5,i,j)+0.5*(f(2,i,j)-f(4,i,j))-rho_out*u(i,j)/6.0
+		v(i,j)=0.0
 	endif
 	enddo
 end subroutine
 !----------------------------------------------------------------------------
-subroutine bouncebk 
+subroutine inner_wall()  ! bounce back boundary condition for inner bounds
 	use vars
 	integer i,j,k
 	do i=2,ied-1
