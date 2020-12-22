@@ -37,6 +37,10 @@ if (ph(i,j)>0) then
 	u(i,j)=u(i,j)/rho(i,j)
 	v(i,j)=v(i,j)/rho(i,j)
 endif
+if (ph(i,j)==1) then
+	u(i,j)=0
+	v(i,j)=0
+endif
 enddo
 enddo
 i=1

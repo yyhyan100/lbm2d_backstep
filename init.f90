@@ -17,7 +17,7 @@ subroutine init()
 	u(:,:)=0.0
 	v(:,:)=0.0
 	rho(:,:)=rho_in
-	u(1,101:jed)=u0
+	u(1,51:jed)=u0
 	ei(:,:)=0.0
 	ei(1,1)=1.0
 	ei(5,1)=1.0
