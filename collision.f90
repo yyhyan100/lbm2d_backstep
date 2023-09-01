@@ -12,3 +12,4 @@ subroutine collision
 	enddo
 end subroutine
 !     
+!    
